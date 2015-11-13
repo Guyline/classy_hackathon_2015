@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151113221058) do
+ActiveRecord::Schema.define(version: 20151113221743) do
 
   create_table "campaign_users", force: :cascade do |t|
     t.integer  "campaign_id", limit: 4
@@ -21,8 +21,8 @@ ActiveRecord::Schema.define(version: 20151113221058) do
   end
 
   create_table "campaigns", force: :cascade do |t|
-    t.integer  "organization_id", limit: 4
     t.integer  "external_id",     limit: 4
+    t.integer  "organization_id", limit: 4
     t.string   "name",            limit: 255
     t.string   "status",          limit: 255
     t.datetime "created_at"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20151113221058) do
   end
 
   create_table "donations", force: :cascade do |t|
+    t.integer  "external_id", limit: 4
     t.integer  "campaign_id", limit: 4
     t.integer  "donator_id",  limit: 4
     t.decimal  "amount",                precision: 5, scale: 2
