@@ -14,4 +14,9 @@
 class RafflePrize < ActiveRecord::Base
   belongs_to      :raffle
   belongs_to      :prize
+
+  validates :tier,
+    :uniqueness => {
+      :scope => :raffle_id
+    }
 end

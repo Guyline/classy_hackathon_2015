@@ -2,11 +2,13 @@
 #
 # Table name: campaigns
 #
-#  id                :integer          not null, primary key
-#  name              :string(255)
-#  organization_name :string(255)
-#  created_at        :datetime
-#  updated_at        :datetime
+#  id              :integer          not null, primary key
+#  organization_id :integer
+#  external_id     :integer
+#  name            :string(255)
+#  status          :string(255)
+#  created_at      :datetime
+#  updated_at      :datetime
 #
 
 class Campaign < ActiveRecord::Base
@@ -21,4 +23,10 @@ class Campaign < ActiveRecord::Base
   has_many        :raffles
   has_many        :prizes,
     :through => :raffles
+
+  belongs_to      :organization
+
+  delegate :prizes,
+    :to => :organization,
+    :prefix => true
 end

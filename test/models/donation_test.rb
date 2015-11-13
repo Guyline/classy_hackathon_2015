@@ -3,6 +3,7 @@
 # Table name: donations
 #
 #  id          :integer          not null, primary key
+#  external_id :integer
 #  campaign_id :integer
 #  donator_id  :integer
 #  amount      :decimal(5, 2)
