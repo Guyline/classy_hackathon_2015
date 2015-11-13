@@ -1,0 +1,42 @@
+<h1>Create a new raffle!</h1>
+
+<form action="">
+  <div>
+    <label for="campaign">Select a Campaign</label>
+    <select
+      name="campaign"
+      ng-model="raffle.campaign"
+      ng-options="campaign.id as campaign.name for campaign in campaigns" ng-required="true">
+      <option value="">Please select a campaign</option>
+    </select>
+  </div>
+
+  <div>
+    <label for="startDate">Start date</label>
+    <input type="text"
+      name="startDate"
+      class="form-control"
+      uib-datepicker-popup="dd-MMMM-yyyy"
+      ng-model="raffle.startDate"
+      is-open="status.startDate.opened"
+      datepicker-options="{formatYear: 'yy',startingDay: 2}"
+      ng-required="true"
+      ng-click="openDate('startDate')"
+      close-text="Close" />
+  </div>
+
+  <div>
+    <label for="startDate">End date</label>
+    <input type="text"
+      name="endDate"
+      class="form-control"
+      uib-datepicker-popup="dd-MMMM-yyyy"
+      ng-model="raffle.endDate"
+      is-open="status.endDate.opened"
+      min-date="raffle.startDate"
+      datepicker-options="{formatYear: 'yy',startingDay: 1}"
+      ng-required="true"
+      ng-click="openDate('endDate')"
+      close-text="Close" />
+  </div>
+</form>

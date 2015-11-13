@@ -1,5 +1,6 @@
 angular
   .module("raffle", [
     'ui.router',
-    'templates'
+    'templates',
+    'ui.bootstrap'
   ]);

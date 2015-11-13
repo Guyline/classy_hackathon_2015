@@ -4,9 +4,10 @@ angular.module("raffle")
   function($locationProvider, $stateProvider, $urlRouterProvider) {
     $locationProvider.html5Mode(true);
     $stateProvider
-      .state("home",  {
+      .state("index", {
+        abstract: true,
         url: "/",
-        templateUrl: "ng-app/dashboard.html",
+        templateUrl: "ng-app/views.html",
         controller: "dashCtrl",
         resolve: {
           user: ["authService",
@@ -14,6 +15,30 @@ angular.module("raffle")
               return authService.getUserDetails(true);
             }
           ]
+        }
+      })
+      .state("index.dashboard",  {
+        url: '',
+        views: {
+          "header": {
+            templateUrl: "ng-app/header.html"
+          },
+          "body": {
+            templateUrl: "ng-app/dashboard.html"
+          }
+        }
+      })
+
+      .state("index.create", {
+        url: "create",
+        views: {
+          "header@index": {
+            templateUrl: "ng-app/header.html"
+          },
+          "body@index": {
+            templateUrl: "ng-app/create.html",
+            controller: "createCtrl"
+          }
         }
       })
 
