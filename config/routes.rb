@@ -8,9 +8,14 @@ Rails.application.routes.draw do
 
   namespace :api, :defaults => {:format => :json} do
     namespace :v1 do
-      resources :raffles, :only => [:index, :show, :create, :update]
-      resources :prizes, :only => [:index, :create]
-      resources :campaigns, :only => [:index]
+      resources :campaigns, :only => [:index] do
+        resources :raffles, :only => [:create]
+      end
+      resources :organizations, :only => [] do
+        resources :prizes, :only => [:create]
+      end
+      resources :prizes, :only => [:index]
+      resources :raffles, :only => [:index, :show, :update]
     end
   end
   get '*path' => 'home#index'

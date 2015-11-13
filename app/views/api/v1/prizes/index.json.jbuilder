@@ -1,0 +1,1 @@
+json.data @prizes, :partial => "api/v1/prizes/prize", :as => :prize
