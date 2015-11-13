@@ -1,24 +1,25 @@
 angular.module("raffle")
 .config([
-  '$locationProvider', '$stateProvider', '$urlRouterProvider',
+  "$locationProvider", "$stateProvider", "$urlRouterProvider",
   function($locationProvider, $stateProvider, $urlRouterProvider) {
     $locationProvider.html5Mode(true);
     $stateProvider
-      .state('home',  {
-        url: '/',
-        templateUrl: 'ng-app/dashboard.html',
+      .state("home",  {
+        url: "/",
+        templateUrl: "ng-app/dashboard.html",
+        controller: "dashCtrl",
         resolve: {
-          auth: ["authService",
+          user: ["authService",
             function(authService) {
-              return authService.getUserDetails();
+              return authService.getUserDetails(true);
             }
           ]
         }
       })
 
-      .state('login', {
-        url: '/login',
-        templateUrl: 'ng-app/login.html'
+      .state("login", {
+        url: "/login",
+        templateUrl: "ng-app/login.html"
       });
   }
 ]);
