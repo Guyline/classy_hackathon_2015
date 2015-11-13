@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       resources :campaigns, :only => [:index]
     end
   end
+  get '*path' => 'home#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
