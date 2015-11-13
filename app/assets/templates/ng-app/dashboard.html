@@ -1,9 +1,11 @@
-<h1>Welcome, {{ user.username }}</h1>
+<div class="container">
+  <h1 class="text-center">Welcome, {{ user.username }}</h1>
 
-<a data-ui-sref="index.create">Create</a>
+  <a data-ui-sref="index.create">Create</a>
 
-<ul>
-  <li ng-repeat="raffle in raffles">
-    <pre ng-bind="raffle | json"></pre>
-  </li>
-</ul>
+  <ul>
+    <li ng-repeat="raffle in raffles">
+      <pre ng-bind="raffle | json"></pre>
+    </li>
+  </ul>
+</div>
