@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151113185513) do
+ActiveRecord::Schema.define(version: 20151113195840) do
 
   create_table "campaign_users", force: :cascade do |t|
     t.integer  "campaign_id", limit: 4
@@ -21,8 +21,8 @@ ActiveRecord::Schema.define(version: 20151113185513) do
   end
 
   create_table "campaigns", force: :cascade do |t|
-    t.string   "name",              limit: 255
-    t.string   "organization_name", limit: 255
+    t.integer  "organization_id", limit: 4
+    t.string   "name",            limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -42,10 +42,17 @@ ActiveRecord::Schema.define(version: 20151113185513) do
     t.datetime "updated_at"
   end
 
+  create_table "organizations", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "prizes", force: :cascade do |t|
-    t.string   "name",        limit: 255
-    t.string   "description", limit: 255
-    t.string   "image_url",   limit: 255
+    t.integer  "organization_id", limit: 4
+    t.string   "name",            limit: 255
+    t.string   "description",     limit: 255
+    t.string   "image_url",       limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -64,7 +71,8 @@ ActiveRecord::Schema.define(version: 20151113185513) do
     t.integer  "user_id",         limit: 4
     t.datetime "start_time"
     t.datetime "end_time"
-    t.decimal  "price_per_entry",           precision: 5, scale: 2
+    t.decimal  "price_per_entry",             precision: 5, scale: 2
+    t.string   "status",          limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
