@@ -5,7 +5,6 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'home#index'
-  get '*path' => 'home#index'
 
   namespace :api, :defaults => {:format => :json} do
     namespace :v1 do
