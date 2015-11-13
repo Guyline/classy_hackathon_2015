@@ -8,7 +8,8 @@ angular.module("raffle")
           $timeout(function() {
             if (valid) {
               deferred.resolve({
-                username: "ML"
+                username: "mlingner",
+                password: "classydev!"
               });
             } else {
               deferred.reject("Not logged in");
@@ -17,6 +18,24 @@ angular.module("raffle")
 
           return deferred.promise;
 
+        },
+        login: function(data) {
+          var deferred = $q.defer();
+
+          $timeout(function() {
+            deferred.resolve(data);
+          }, 1000);
+
+          return deferred.promise;
+        },
+        logout: function(data) {
+          var deferred = $q.defer();
+
+          $timeout(function() {
+            deferred.resolve(data);
+          }, 1000);
+
+          return deferred.promise;
         }
       }
     }

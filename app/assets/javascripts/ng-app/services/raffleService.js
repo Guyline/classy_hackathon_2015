@@ -14,6 +14,12 @@ angular.module("raffle")
             url: "/api/v1/raffles",
             data: raffle
           })
+        },
+        get: function(raffleId) {
+          return $http({
+            method: "GET",
+            url: "/api/v1/raffles/" + raffleId
+          });
         }
       };
     }
