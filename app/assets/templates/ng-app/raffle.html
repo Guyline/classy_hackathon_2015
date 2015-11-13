@@ -1,7 +1,7 @@
 <div class="container">
   <h1 class="text-center">Create a new raffle!</h1>
 
-  <form class="create-form col-md-8 col-md-offset-2" ng-submit="raffle.create()">
+  <form class="create-form col-md-8 col-md-offset-2" ng-submit="raffle.save()">
     <div class="form-group">
       <label for="campaign">Select a Campaign</label>
       <select
@@ -14,33 +14,33 @@
     </div>
 
     <div class="form-group">
-      <label for="startDate">Start date</label>
+      <label for="start_time">Start time</label>
       <input class="form-control"
         type="text"
-        name="startDate"
+        name="start_time"
         class="form-control"
         uib-datepicker-popup="dd-MMMM-yyyy"
-        ng-model="raffle.startDate"
-        is-open="status.startDate.opened"
+        ng-model="raffle.start_time"
+        is-open="status.start_time.opened"
         datepicker-options="{formatYear: 'yy',startingDay: 2}"
         ng-required="true"
-        ng-click="openDate('startDate')"
+        ng-click="openTime('start_time')"
         close-text="Close" />
     </div>
 
     <div class="form-group">
-      <label for="startDate">End date</label>
+      <label for="start_time">End time</label>
       <input type="text"
         class="form-control"
-        name="endDate"
+        name="end_time"
         class="form-control"
         uib-datepicker-popup="dd-MMMM-yyyy"
-        ng-model="raffle.endDate"
-        is-open="status.endDate.opened"
-        min-date="raffle.startDate"
+        ng-model="raffle.end_time"
+        is-open="status.end_time.opened"
+        min-date="raffle.start_time"
         datepicker-options="{formatYear: 'yy',startingDay: 1}"
         ng-required="true"
-        ng-click="openDate('endDate')"
+        ng-click="openTime('end_time')"
         close-text="Close" />
     </div>
 

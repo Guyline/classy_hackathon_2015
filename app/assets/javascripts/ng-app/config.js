@@ -30,14 +30,27 @@ angular.module("raffle")
       })
 
       .state("index.create", {
-        url: "create",
+        url: "raffle/new",
         views: {
           "header@index": {
             templateUrl: "ng-app/header.html"
           },
           "body@index": {
-            templateUrl: "ng-app/create.html",
-            controller: "createCtrl"
+            templateUrl: "ng-app/raffle.html",
+            controller: "raffleCtrl"
+          }
+        }
+      })
+
+      .state("index.edit", {
+        url: "raffle/:raffleId",
+        views: {
+          "header@index": {
+            templateUrl: "ng-app/header.html",
+          },
+          "body@index": {
+            templateUrl: "ng-app/raffle.html",
+            controller: "raffleCtrl"
           }
         }
       })
