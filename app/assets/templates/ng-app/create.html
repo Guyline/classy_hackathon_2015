@@ -1,44 +1,49 @@
-<h1>Create a new raffle!</h1>
+<div class="container">
+  <h1 class="text-center">Create a new raffle!</h1>
 
-<form ng-submit="raffle.create()">
-  <div>
-    <label for="campaign">Select a Campaign</label>
-    <select
-      name="campaign"
-      ng-model="raffle.campaign_id"
-      ng-options="campaign.id as campaign.name for campaign in campaigns" ng-required="true">
-      <option value="">Please select a campaign</option>
-    </select>
-  </div>
+  <form class="col-md-8 col-md-offset-2" ng-submit="raffle.create()">
+    <div class="form-group">
+      <label for="campaign">Select a Campaign</label>
+      <select
+        class="form-control"
+        name="campaign"
+        ng-model="raffle.campaign_id"
+        ng-options="campaign.id as campaign.name for campaign in campaigns" ng-required="true">
+        <option value="">Please select a campaign</option>
+      </select>
+    </div>
 
-  <div>
-    <label for="startDate">Start date</label>
-    <input type="text"
-      name="startDate"
-      class="form-control"
-      uib-datepicker-popup="dd-MMMM-yyyy"
-      ng-model="raffle.startDate"
-      is-open="status.startDate.opened"
-      datepicker-options="{formatYear: 'yy',startingDay: 2}"
-      ng-required="true"
-      ng-click="openDate('startDate')"
-      close-text="Close" />
-  </div>
+    <div class="form-group">
+      <label for="startDate">Start date</label>
+      <input class="form-control"
+        type="text"
+        name="startDate"
+        class="form-control"
+        uib-datepicker-popup="dd-MMMM-yyyy"
+        ng-model="raffle.startDate"
+        is-open="status.startDate.opened"
+        datepicker-options="{formatYear: 'yy',startingDay: 2}"
+        ng-required="true"
+        ng-click="openDate('startDate')"
+        close-text="Close" />
+    </div>
 
-  <div>
-    <label for="startDate">End date</label>
-    <input type="text"
-      name="endDate"
-      class="form-control"
-      uib-datepicker-popup="dd-MMMM-yyyy"
-      ng-model="raffle.endDate"
-      is-open="status.endDate.opened"
-      min-date="raffle.startDate"
-      datepicker-options="{formatYear: 'yy',startingDay: 1}"
-      ng-required="true"
-      ng-click="openDate('endDate')"
-      close-text="Close" />
-  </div>
+    <div class="form-group">
+      <label for="startDate">End date</label>
+      <input type="text"
+        class="form-control"
+        name="endDate"
+        class="form-control"
+        uib-datepicker-popup="dd-MMMM-yyyy"
+        ng-model="raffle.endDate"
+        is-open="status.endDate.opened"
+        min-date="raffle.startDate"
+        datepicker-options="{formatYear: 'yy',startingDay: 1}"
+        ng-required="true"
+        ng-click="openDate('endDate')"
+        close-text="Close" />
+    </div>
 
-  <button>Submit!</button>
-</form>
+    <button class="btn btn-primary btn-lg">Submit!</button>
+  </form>
+</div>
