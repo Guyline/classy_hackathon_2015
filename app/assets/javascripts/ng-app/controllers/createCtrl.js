@@ -1,12 +1,14 @@
 angular.module("raffle")
-  .controller("createCtrl", ["$log", "$scope", "$state", "campaignService",
-    function($log, $scope, $state, campaignService) {
+  .controller("createCtrl", ["$log", "$scope", "$state", "campaignService", "Raffle",
+    function($log, $scope, $state, campaignService, Raffle) {
 
       campaignService.index().then(function(response) {
         $scope.campaigns = response.data.data;
       }, function(error) {
         $log.log(error);
       });
+
+      $scope.raffle = new Raffle();
 
       $scope.status = {
         startDate: {
@@ -19,6 +21,6 @@ angular.module("raffle")
 
       $scope.openDate = function(which) {
         $scope.status[which].opened = true;
-      }
+      };      
     }
   ])

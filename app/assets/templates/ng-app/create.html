@@ -1,11 +1,11 @@
 <h1>Create a new raffle!</h1>
 
-<form action="">
+<form ng-submit="raffle.create()">
   <div>
     <label for="campaign">Select a Campaign</label>
     <select
       name="campaign"
-      ng-model="raffle.campaign"
+      ng-model="raffle.campaign_id"
       ng-options="campaign.id as campaign.name for campaign in campaigns" ng-required="true">
       <option value="">Please select a campaign</option>
     </select>
@@ -39,4 +39,6 @@
       ng-click="openDate('endDate')"
       close-text="Close" />
   </div>
+
+  <button>Submit!</button>
 </form>

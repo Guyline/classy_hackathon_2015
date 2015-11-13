@@ -7,6 +7,13 @@ angular.module("raffle")
             method: "GET",
             url: "/api/v1/raffles"
           });
+        },
+        post: function(raffle) {
+          return $http({
+            method: "POST",
+            url: "/api/v1/raffles",
+            data: raffle
+          })
         }
       };
     }
