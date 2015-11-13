@@ -33,6 +33,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 gem 'devise'
+gem 'sass', '3.4.19'
+gem "bower-rails", "~> 0.10.0"
+gem "angular-rails-templates"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -48,4 +51,3 @@ group :development do
 
   gem 'annotate'
 end
-
