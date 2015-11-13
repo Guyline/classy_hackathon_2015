@@ -20,14 +20,21 @@ angular.module("raffle")
         $log.log(error);
       });
 
-      $scope.status = {
+      $scope.dateStatus = {
         start_time: {
           opened: false
         },
         end_time: {
           opened: false
         }
-      }
+      };
+
+      $scope.statusOptions = {
+        "pending": "Pending",
+        "in progress": "In progress",
+        "completed": "Completed",
+        "finalized": "Finalized"
+      };
 
       $scope.openTime = function(which) {
         $scope.status[which].opened = true;

@@ -8,7 +8,8 @@
         class="form-control"
         name="campaign"
         ng-model="raffle.campaign_id"
-        ng-options="campaign.id as campaign.name for campaign in campaigns" ng-required="true">
+        ng-options="campaign.id as campaign.name for campaign in campaigns"
+        ng-required="true">
         <option value="">Please select a campaign</option>
       </select>
     </div>
@@ -21,7 +22,7 @@
         class="form-control"
         uib-datepicker-popup="dd-MMMM-yyyy"
         ng-model="raffle.start_time"
-        is-open="status.start_time.opened"
+        is-open="dateStatus.start_time.opened"
         datepicker-options="{formatYear: 'yy',startingDay: 2}"
         ng-required="true"
         ng-click="openTime('start_time')"
@@ -33,15 +34,23 @@
       <input type="text"
         class="form-control"
         name="end_time"
-        class="form-control"
         uib-datepicker-popup="dd-MMMM-yyyy"
         ng-model="raffle.end_time"
-        is-open="status.end_time.opened"
+        is-open="dateStatus.end_time.opened"
         min-date="raffle.start_time"
         datepicker-options="{formatYear: 'yy',startingDay: 1}"
         ng-required="true"
         ng-click="openTime('end_time')"
         close-text="Close" />
+    </div>
+
+    <div class="form-group">
+      <label for="status">Raffle Status</label>
+      <select name="status"
+        ng-model="raffle.status"
+        ng-options="key as value for (key, value) in statusOptions"
+        class="form-control"
+      ></select>
     </div>
 
     <button class="btn btn-primary btn-lg">Submit!</button>
