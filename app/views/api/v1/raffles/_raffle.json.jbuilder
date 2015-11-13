@@ -1,0 +1,9 @@
+json.(raffle,
+  :id,
+  :campaign_id,
+  :user_id,
+  :start_time,
+  :end_time,
+  :price_per_entry,
+  :status
+)
