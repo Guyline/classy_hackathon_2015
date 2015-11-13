@@ -44,7 +44,8 @@ angular.module("raffle")
 
       .state("login", {
         url: "/login",
-        templateUrl: "ng-app/login.html"
+        templateUrl: "ng-app/login.html",
+        controller: "loginCtrl"
       });
   }
 ]);

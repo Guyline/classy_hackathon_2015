@@ -1,1 +1,20 @@
-login
+<div class="jumbotron text-center clearfix">
+  <div class="container">
+    <h1>Classy Raffles!</h1>
+    <p class="col-md-4 col-md-offset-4">Incentivize your donors by giving away awesome prizes.</p>
+
+    <form class="form-group" ng-submit="user.login()">
+      <div class="form-group col-md-4 col-md-offset-4">
+        <label for="username">Username</label>
+        <input class="form-control" type="text" name="username" ng-model="user.username">
+      </div>
+      <div class="form-group col-md-4 col-md-offset-4">
+        <label for="password">Password</label>
+        <input class="form-control" type="password" name="password" ng-model="user.password" />
+      </div>
+      <div class="col-md-4 col-md-offset-4">
+        <button class="btn btn-success btn-lg">Log in</button>
+      </div>
+    </form>
+  </div>
+</div>

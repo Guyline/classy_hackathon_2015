@@ -4,6 +4,6 @@ angular.module("raffle")
       $rootScope.$on('$stateChangeError', function (event, toState, toParams, fromState, fromParams, error) {
         $log.debug(error);
         $state.go('login');
-    });
+      });
     }
   ])

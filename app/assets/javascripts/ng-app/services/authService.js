@@ -17,6 +17,15 @@ angular.module("raffle")
 
           return deferred.promise;
 
+        },
+        login: function(data) {
+          var deferred = $q.defer();
+
+          $timeout(function() {
+            deferred.resolve(data);
+          }, 1000);
+
+          return deferred.promise;
         }
       }
     }
