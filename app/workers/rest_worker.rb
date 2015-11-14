@@ -52,7 +52,7 @@ class RestWorker
         current_page = 1
         last_page = nil
 
-        url = "http://dev-api1.classy-test.org/campaign/#{campaign_external_id}/donation"
+        url = "http://dev-api1.classy-test.org/campaign/#{campaign_external_id}/transaction"
         request_params = {
           :page => current_page
         }
@@ -72,7 +72,7 @@ class RestWorker
 
             donator_email = donation_hash["member_email_address"]
             donator_name = donation_hash["member_name"]
-            donator = Donator.where(:email => donator_email, :name => donator_hash).first_or_create
+            donator = Donator.where(:email => donator_email, :name => donator_name).first_or_create
             donation.donator = donator
 
             donation.campaign = campaign
@@ -96,6 +96,7 @@ class RestWorker
       :authorization => "Bearer ebd27bc36632d6ef41ee18834edf5eb6f8ec3381a3c062484ab9dfb138f73639ffcf1496e178377cce5ad58d5687fec2066d97b52ab24f24d66d9b5fc7812151"
     }
 
+    puts "URL: #{url}"
     response = RestClient.get(url, headers)
     response_hash = JSON.parse(response)
   end
