@@ -8,15 +8,7 @@
 
   <div class="container">
     <h1 class="lead">Here are the awesome raffles you've already started:</h1>
-    <div class="list-group">
-      <a class="list-group-item"
-        ng-class="{'list-group-item-success': raffle.status === 'finalized' }"
-        ng-repeat="raffle in raffles"
-        ui-sref="index.edit({ raffleId: raffle.id })">
-        <span ng-bind="'Raffle #' + raffle.id"></span>
-        <span class="badge" ng-bind="raffle.status"></span>
-      </a>
-    </div>
+    <div ng-include="'ng-app/partials/raffles.html'"></div>
   </div>
 
 

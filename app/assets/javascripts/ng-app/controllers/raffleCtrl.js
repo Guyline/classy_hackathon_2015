@@ -31,7 +31,7 @@ angular.module("raffle")
 
       $scope.statusOptions = {
         "pending": "Pending",
-        "in progress": "In progress",
+        "in_progress": "In progress",
         "completed": "Completed",
         "finalized": "Finalized"
       };
