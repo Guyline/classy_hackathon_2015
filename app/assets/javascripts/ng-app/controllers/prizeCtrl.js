@@ -1,6 +1,6 @@
 angular.module("raffle")
-  .controller("prizeCtrl", ["$log", "$scope", "$state", "Prize",
-    function($log, $scope, $state, Prize) {
+  .controller("prizeCtrl", ["$log", "$scope", "$state", "Prize", "prizeService",
+    function($log, $scope, $state, Prize, prizeService) {
       if ($state.params.prizeId) {
         prizeService.get($state.params.prizeId).then(function(response) {
           $scope.prize = new Prize(response.data);
