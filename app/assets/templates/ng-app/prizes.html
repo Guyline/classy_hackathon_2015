@@ -1,0 +1,15 @@
+<div class="container">
+  <h1 class="text-center">Manage Your Prizes</h1>
+
+  <div class="container">
+    <h1 class="lead">Click any prize below to edit it! <small><a data-ui-sref="index.createPrize">Create New Prize</a></small></h1>
+
+    <div class="list-group">
+      <a class="list-group-item"
+        ng-repeat="prize in prizes"
+        ui-sref="index.editPrize({ prizeId: prize.id })">
+        <span ng-bind="prize.name"></span>
+      </a>
+    </div>
+  </div>
+</div>

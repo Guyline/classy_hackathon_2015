@@ -5,16 +5,14 @@ angular.module("raffle")
         getUserDetails: function(valid) {
           var deferred = $q.defer();
 
-          $timeout(function() {
-            if (valid) {
-              deferred.resolve({
-                username: "mlingner",
-                password: "classydev!"
-              });
-            } else {
-              deferred.reject("Not logged in");
-            }
-          }, 1000);
+          if (valid) {
+            deferred.resolve({
+              username: "mlingner",
+              password: "classydev!"
+            });
+          } else {
+            deferred.reject("Not logged in");
+          }
 
           return deferred.promise;
 
@@ -22,18 +20,14 @@ angular.module("raffle")
         login: function(data) {
           var deferred = $q.defer();
 
-          $timeout(function() {
-            deferred.resolve(data);
-          }, 1000);
+          deferred.resolve(data);
 
           return deferred.promise;
         },
         logout: function(data) {
           var deferred = $q.defer();
 
-          $timeout(function() {
-            deferred.resolve(data);
-          }, 1000);
+          deferred.resolve(data);
 
           return deferred.promise;
         }

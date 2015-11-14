@@ -29,7 +29,58 @@ angular.module("raffle")
         }
       })
 
-      .state("index.create", {
+      .state("index.prizes",  {
+        url: 'prizes',
+        views: {
+          "header": {
+            templateUrl: "ng-app/header.html"
+          },
+          "body": {
+            templateUrl: "ng-app/prizes.html",
+            controller: "prizesCtrl"
+          }
+        }
+      })
+
+      .state("index.raffles",  {
+        url: 'raffles',
+        views: {
+          "header": {
+            templateUrl: "ng-app/header.html"
+          },
+          "body": {
+            templateUrl: "ng-app/raffles.html"
+          }
+        }
+      })
+
+      .state("index.createPrize", {
+        url: "prize/new",
+        views: {
+          "header@index": {
+            templateUrl: "ng-app/header.html"
+          },
+          "body@index": {
+            templateUrl: "ng-app/prize.html",
+            controller: "prizeCtrl"
+          }
+        }
+      })
+
+      .state("index.editPrize", {
+        url: "prize/:prizeId",
+        views: {
+          "header@index": {
+            templateUrl: "ng-app/header.html"
+          },
+          "body@index": {
+            templateUrl: "ng-app/prize.html",
+            controller: "prizeCtrl"
+          }
+        }
+      })
+
+      .state("index.createRaffle", {
         url: "raffle/new",
         views: {
           "header@index": {
@@ -42,7 +93,7 @@ angular.module("raffle")
         }
       })
 
-      .state("index.edit", {
+      .state("index.editRaffle", {
         url: "raffle/:raffleId",
         views: {
           "header@index": {

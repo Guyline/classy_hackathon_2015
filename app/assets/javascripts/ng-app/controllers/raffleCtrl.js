@@ -1,9 +1,28 @@
 angular.module("raffle")
-  .controller("raffleCtrl", ["$log", "$scope", "$state", "campaignService", "raffleService", "Raffle",
-    function($log, $scope, $state, campaignService, raffleService, Raffle) {
+  .controller("raffleCtrl", ["$log", "$scope", "$state",
+  "campaignService", "raffleService", "organizationService", "Raffle",
+    function($log, $scope, $state,
+      campaignService, raffleService, organizationService, Raffle) {
 
       campaignService.index().then(function(response) {
         $scope.campaigns = response.data.data;
+
+        organizationService.indexPrizes(34).then(function(response) {
+          $scope.prizes = [{
+            name: "Coloring book",
+            id: 34
+          },
+          {
+            name: "Pencil Pack",
+            id: 35
+          },
+          {
+            name: "Dinosaur toy",
+            id: 36
+          }];
+        }, function(error) {
+          $log.log(error);
+        });
 
         if ($state.params.raffleId) {
           raffleService.get($state.params.raffleId).then(function(response) {
@@ -31,13 +50,38 @@ angular.module("raffle")
 
       $scope.statusOptions = {
         "pending": "Pending",
-        "in progress": "In progress",
+        "in_progress": "In progress",
         "completed": "Completed",
         "finalized": "Finalized"
       };
 
       $scope.openTime = function(which) {
-        $scope.status[which].opened = true;
+        $scope.dateStatus[which].opened = true;
       };
+
+      $scope.addPrize = function() {
+        $scope.raffle.prizes.push($scope.newPrize);
+        $scope.newPrize = {};
+      };
+
+      $scope.getPrizeName = function(prizeId) {
+        return $scope.prizes.filter(function(prize) {
+          return prizeId == prize.id;
+        })[0].name;
+      };
+
+      $scope.getPrizeAmount = function(prizeId) {
+        return $scope.raffle.prizes.filter(function(prize) {
+          return prizeId == prize.id;
+        })[0].amount;
+      };
+
+      $scope.removePrize = function(prizeId) {
+        var prizeIndex = $scope.raffle.prizes.filter(function(prize) {
+          return prizeId == prize.id;
+        })[0];
+
+        $scope.raffle.prizes.splice(prizeIndex, 1);
+      }
     }
   ])
