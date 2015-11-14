@@ -1,9 +1,28 @@
 angular.module("raffle")
-  .controller("raffleCtrl", ["$log", "$scope", "$state", "campaignService", "raffleService", "Raffle",
-    function($log, $scope, $state, campaignService, raffleService, Raffle) {
+  .controller("raffleCtrl", ["$log", "$scope", "$state",
+  "campaignService", "raffleService", "organizationService", "Raffle",
+    function($log, $scope, $state,
+      campaignService, raffleService, organizationService, Raffle) {
 
       campaignService.index().then(function(response) {
         $scope.campaigns = response.data.data;
+
+        organizationService.indexPrizes(34).then(function(response) {
+          $scope.prizes = [{
+            name: "Coloring book",
+            id: 34
+          },
+          {
+            name: "Pencil Pack",
+            id: 35
+          },
+          {
+            name: "Dinosaur toy",
+            id: 36
+          }];
+        }, function(error) {
+          $log.log(error);
+        });
 
         if ($state.params.raffleId) {
           raffleService.get($state.params.raffleId).then(function(response) {

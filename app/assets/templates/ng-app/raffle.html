@@ -53,6 +53,31 @@
       ></select>
     </div>
 
+    <div class="form-group">
+      <h2>Prizes</h2>
+      <div ng-repeat="prize in raffle.prizes">
+        <label ng-bind="prize.name + ': Tier $index'"></label>
+        <input type="number" ng-model="raffle.prizes[prize.id].amount" />
+      </div>
+      <div class="container">
+        <h3>Add a prize</h3>
+        <div class="form-group">
+          <label for="prizeAmount">Choose an amount to add</label>
+          <input type="number" ng-model="newPrize.amount" />
+        </div>
+
+        <div class="form-group">
+          <label for="prizeId">Choose a prize</label>
+          <select name="prizeId"
+            ng-options="prize.id as prize.name for prize in prizes"
+            ng-model="newPrize.id">
+            <option value="">Select a prize to add</option>
+          </select>
+        </div>
+        <a class="btn btn-info btn-small" ng-click="addPrize()">Add prize</a>
+      </div>
+    </div>
+
     <button class="btn btn-primary btn-lg">Submit!</button>
   </form>
 </div>
