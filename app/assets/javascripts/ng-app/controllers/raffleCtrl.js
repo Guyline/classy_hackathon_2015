@@ -4,22 +4,11 @@ angular.module("raffle")
     function($log, $scope, $state,
       campaignService, raffleService, organizationService, Raffle) {
 
-      campaignService.index().then(function(response) {
+      campaignService.index(34).then(function(response) {
         $scope.campaigns = response.data.data;
 
         organizationService.indexPrizes(34).then(function(response) {
-          $scope.prizes = [{
-            name: "Coloring book",
-            id: 34
-          },
-          {
-            name: "Pencil Pack",
-            id: 35
-          },
-          {
-            name: "Dinosaur toy",
-            id: 36
-          }];
+          $scope.prizes = response.data.data;
         }, function(error) {
           $log.log(error);
         });
@@ -72,13 +61,13 @@ angular.module("raffle")
 
       $scope.getPrizeAmount = function(prizeId) {
         return $scope.raffle.prizes.filter(function(prize) {
-          return prizeId == prize.id;
+          return prizeId == prize.prize_id;
         })[0].amount;
       };
 
       $scope.removePrize = function(prizeId) {
         var prizeIndex = $scope.raffle.prizes.filter(function(prize) {
-          return prizeId == prize.id;
+          return prizeId == prize.prize_id;
         })[0];
 
         $scope.raffle.prizes.splice(prizeIndex, 1);

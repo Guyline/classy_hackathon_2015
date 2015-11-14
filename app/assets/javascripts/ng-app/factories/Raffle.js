@@ -1,6 +1,6 @@
 angular.module("raffle")
-  .factory("Raffle", ["$log", "raffleService",
-    function($log, raffleService) {
+  .factory("Raffle", ["$log", "raffleService", "campaignService",
+    function($log, raffleService, campaignService) {
       function Raffle(data) {
         if (typeof data !== "undefined") {
           this.id = data.id;
@@ -26,7 +26,7 @@ angular.module("raffle")
             $log.log(error);
           })
         } else {
-          raffleService.post(this).then(function(response) {
+          campaignService.postRaffle(this).then(function(response) {
             $log.log(response);
           }, function(error) {
             $log.log(error);

@@ -61,8 +61,8 @@
           <p class="list-group-item-text">You don't have any prizes for this raffle yet. Add some below!</p>
         </div>
         <div class="list-group-item" ng-repeat="prize in raffle.prizes">
-          <label ng-bind="getPrizeName(prize.id)"></label>
-          <span ng-bind="getPrizeAmount(prize.id)"></span>
+          <label ng-bind="getPrizeName(prize.prize_id)"></label>
+          <span ng-bind="getPrizeAmount(prize.prize_id)"></span>
           <a class="badge" ng-click="removePrize(prize.id)">Remove</a>
         </div>
       </div>
@@ -77,7 +77,7 @@
           <select class="form-control input-sm"
             name="prizeId"
             ng-options="prize.id as prize.name for prize in prizes"
-            ng-model="newPrize.id">
+            ng-model="newPrize.prize_id">
             <option value="">Select a prize to add</option>
           </select>
           <br>

@@ -8,13 +8,6 @@ angular.module("raffle")
             url: "/api/v1/raffles"
           });
         },
-        post: function(raffle) {
-          return $http({
-            method: "POST",
-            url: "/api/v1/raffles",
-            data: raffle
-          })
-        },
         get: function(raffleId) {
           return $http({
             method: "GET",

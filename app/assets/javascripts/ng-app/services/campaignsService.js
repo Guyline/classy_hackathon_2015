@@ -3,11 +3,6 @@ angular.module("raffle")
     function($log, $q, $http, $timeout) {
       return {
         index: function() {
-          // return $http({
-          //   method: "GET",
-          //   url: "/api/v1/campaigns"
-          // });
-
           var deferred = $q.defer();
 
           $timeout(function() {
@@ -17,7 +12,7 @@ angular.module("raffle")
                   {
                     id: 1,
                     organization_id: 34,
-                    name: "Matt's Crowdfunding Campaign"
+                    name: "Pierre's Campaign"
                   },
                   {
                     id: 2,
@@ -27,7 +22,7 @@ angular.module("raffle")
                   {
                     id: 3,
                     organization_id: 34,
-                    name: "Matt's Crowdfunding Campaign"
+                    name: "Dan's Campaign"
                   }
                 ]
               }
@@ -35,7 +30,14 @@ angular.module("raffle")
           }, 1000);
 
           return deferred.promise;
-        }
+        },
+        postRaffle: function(raffle) {
+          return $http({
+            method: "POST",
+            url: "/api/v1/campaigns/" + raffle.campaign_id + "/raffles",
+            data: raffle
+          })
+        },
       };
     }
   ])
