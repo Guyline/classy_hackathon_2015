@@ -12,9 +12,9 @@ Rails.application.routes.draw do
         resources :raffles, :only => [:create]
       end
       resources :organizations, :only => [] do
-        resources :prizes, :only => [:create]
+        resources :prizes, :only => [:index, :create]
       end
-      resources :prizes, :only => [:index]
+      resources :prizes, :only => [:show]
       resources :raffles, :only => [:index, :show, :update]
     end
   end

@@ -1,6 +1,11 @@
 class Api::V1::PrizesController < Api::V1::ApplicationController
   def index
-    @prizes = Prize.all
+    organization = Organization.find(params[:organization_id])
+    @prizes = organization.prizes.all
+  end
+
+  def show
+    @prize = Prize.find(params[:id])
   end
 
   def create
