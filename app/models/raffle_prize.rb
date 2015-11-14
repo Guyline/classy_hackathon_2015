@@ -19,4 +19,10 @@ class RafflePrize < ActiveRecord::Base
     :uniqueness => {
       :scope => :raffle_id
     }
+
+  validates :raffle_id,
+    :presence => true
+
+  validates :prize_id,
+    :presence => true
 end
