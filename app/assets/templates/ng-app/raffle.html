@@ -44,7 +44,7 @@
         close-text="Close" />
     </div>
 
-    <div class="form-group">
+    <div class="form-group" data-ng-if="raffle.id">
       <label for="status">Raffle Status</label>
       <select name="status"
         ng-model="raffle.status"
