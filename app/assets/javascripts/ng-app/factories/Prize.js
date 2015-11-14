@@ -1,11 +1,13 @@
 angular.module("raffle")
-  .factory("Prize", ["$log", "authService",
-    function($log, prizeService) {
+  .factory("Prize", ["$log", "prizeService", "organizationService",
+    function($log, prizeService, organizationService) {
       function Prize(data) {
-        this.name = data.name;
-        this.tier = data.tier;
-        this.image_url = data.image_url;
-        this.description = data.description;
+        if (typeof data !== "undefined") {
+          this.name = data.name;
+          this.tier = data.tier;
+          this.image_url = data.image_url;
+          this.description = data.description;
+        }
       }
 
       Prize.prototype.save = function() {
@@ -16,7 +18,7 @@ angular.module("raffle")
             $log.log(error);
           })
         } else {
-          prizeService.post(this).then(function(response) {
+          organizationService.postPrize(34, this).then(function(response) {
             $log.log(response);
           }, function(error) {
             $log.log(error);
@@ -24,6 +26,6 @@ angular.module("raffle")
         }
       };
 
-      return User;
+      return Prize;
     }
   ])

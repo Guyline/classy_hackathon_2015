@@ -8,6 +8,12 @@ angular.module("raffle")
             url: "/api/v1/organizations/" + organizationId + "/prizes"
           });
         },
+        indexPrizes: function(organizationId) {
+          return $http({
+            method: "GET",
+            url: "/api/v1/organizations/" + organizationId + "/prizes"
+          });
+        },
         postPrize: function(organizationId, prize) {
           return $http({
             method: "POST",
