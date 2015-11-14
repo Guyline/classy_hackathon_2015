@@ -27,6 +27,7 @@ angular.module("raffle")
         if ($state.params.raffleId) {
           raffleService.get($state.params.raffleId).then(function(response) {
             $scope.raffle = new Raffle(response.data);
+            $scope.raffle.prizes = new Array();
             $log.log($scope.raffle);
           }, function(error) {
             $log.log(error);
@@ -58,5 +59,30 @@ angular.module("raffle")
       $scope.openTime = function(which) {
         $scope.status[which].opened = true;
       };
+
+      $scope.addPrize = function() {
+        $scope.raffle.prizes.push($scope.newPrize);
+        $scope.newPrize = {};
+      };
+
+      $scope.getPrizeName = function(prizeId) {
+        return $scope.prizes.filter(function(prize) {
+          return prizeId == prize.id;
+        })[0].name;
+      };
+
+      $scope.getPrizeAmount = function(prizeId) {
+        return $scope.raffle.prizes.filter(function(prize) {
+          return prizeId == prize.id;
+        })[0].amount;
+      };
+
+      $scope.removePrize = function(prizeId) {
+        var prizeIndex = $scope.raffle.prizes.filter(function(prize) {
+          return prizeId == prize.id;
+        })[0];
+
+        $scope.raffle.prizes.splice(prizeIndex, 1);
+      }
     }
   ])

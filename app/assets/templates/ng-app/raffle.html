@@ -55,26 +55,34 @@
 
     <div class="form-group">
       <h2>Prizes</h2>
-      <div ng-repeat="prize in raffle.prizes">
-        <label ng-bind="prize.name + ': Tier $index'"></label>
-        <input type="number" ng-model="raffle.prizes[prize.id].amount" />
+      <div class="list-group">
+        <div class="list-group-item" ng-if="!raffle.prizes.length">
+          <h4 class="list-group-item-heading">No prizes!</h4>
+          <p class="list-group-item-text">You don't have any prizes for this raffle yet. Add some below!</p>
+        </div>
+        <div class="list-group-item" ng-repeat="prize in raffle.prizes">
+          <label ng-bind="getPrizeName(prize.id)"></label>
+          <span ng-bind="getPrizeAmount(prize.id)"></span>
+          <a class="badge" ng-click="removePrize(prize.id)">Remove</a>
+        </div>
       </div>
+
       <div class="container">
         <h3>Add a prize</h3>
-        <div class="form-group">
-          <label for="prizeAmount">Choose an amount to add</label>
-          <input type="number" ng-model="newPrize.amount" />
-        </div>
-
-        <div class="form-group">
-          <label for="prizeId">Choose a prize</label>
-          <select name="prizeId"
+        <div class="form-group col-md-6">
+          <label class="control-label" for="prizeAmount">Choose an amount to add</label>
+          <input class="form-control input-sm" type="number" ng-model="newPrize.amount" />
+          <br>
+          <label class="control-label" for="prizeId">Choose a prize</label>
+          <select class="form-control input-sm"
+            name="prizeId"
             ng-options="prize.id as prize.name for prize in prizes"
             ng-model="newPrize.id">
             <option value="">Select a prize to add</option>
           </select>
+          <br>
+          <a class="btn btn-info btn-small" ng-click="addPrize()">Add prize</a>
         </div>
-        <a class="btn btn-info btn-small" ng-click="addPrize()">Add prize</a>
       </div>
     </div>
 
