@@ -56,7 +56,7 @@ angular.module("raffle")
       };
 
       $scope.openTime = function(which) {
-        $scope.status[which].opened = true;
+        $scope.dateStatus[which].opened = true;
       };
 
       $scope.addPrize = function() {
