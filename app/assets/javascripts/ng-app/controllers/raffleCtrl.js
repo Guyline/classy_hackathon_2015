@@ -27,7 +27,6 @@ angular.module("raffle")
         if ($state.params.raffleId) {
           raffleService.get($state.params.raffleId).then(function(response) {
             $scope.raffle = new Raffle(response.data);
-            $scope.raffle.prizes = new Array();
             $log.log($scope.raffle);
           }, function(error) {
             $log.log(error);

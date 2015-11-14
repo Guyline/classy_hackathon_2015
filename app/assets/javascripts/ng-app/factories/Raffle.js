@@ -12,6 +12,9 @@ angular.module("raffle")
           this.status = data.status;
           this.created_at = data.created_at;
           this.updated_at = data.updated_at;
+          this.prizes = data.prizes;
+        } else {
+          this.prizes = [];
         }
       }
 
